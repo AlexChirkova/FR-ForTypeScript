@@ -2,6 +2,8 @@
 
 //Ex 1
 
+//from
+
 /*const data: string[] = []
 const record = (param: string) => {
     setInterval(() = > {
