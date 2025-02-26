@@ -93,3 +93,11 @@ declare class StorageClass<T extends Vehicle> implements VehicleStorage<T> {
     sortByOwnersLastName(): T[];
     filterByOwnersLastName(lastName: string): T[];
 }
+declare const owner1: COvner;
+declare const owner2: COvner;
+declare const car1: CCar;
+declare const car2: CCar;
+declare const storage: StorageClass<Vehicle>;
+declare const sortedVehicles: Vehicle[];
+declare const filteredVehicles: Vehicle[];
+declare const moto: СMotobike;

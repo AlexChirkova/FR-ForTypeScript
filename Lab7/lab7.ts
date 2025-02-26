@@ -164,15 +164,39 @@ class StorageClass<T extends Vehicle> implements VehicleStorage<T> {
         this.vehicles.push(vehicle);
     }
 
-    // Сортировка
     sortByOwnersLastName(): T[] {
         return this.vehicles.slice().sort((a, b) => a.owner.lastName.localeCompare(b.brand));
     }
 
-    // Фильтрация
     filterByOwnersLastName(lastName: string): T[] {
         return this.vehicles.filter(vehicle => 
             vehicle.owner.lastName.toLowerCase().startsWith(lastName.toLowerCase())
         );
     }
 }
+
+
+const owner1 = new COvner("Josten", "Neil", "Abram", new Date("1988-01-19"), Documents.Passport, "1234", "123456");
+const owner2 = new COvner("Minyard", "Andrew", "Joseph", new Date("1987-11-04"), Documents.Passport, "5678", "654321");
+
+const car1 = new CCar("Toyota", "Rav4", 2016, "ABC123", "A123BC", owner1, CarType.SUV, CarClass.Comfort);
+const car2 = new CCar("BMW", "X5", 2019, "XYZ987", "B456XY", owner2, CarType.SUV, CarClass.Luxury);
+
+const storage = new StorageClass<Vehicle>();
+storage.addVehicle(car1);
+storage.addVehicle(car2);
+
+
+const sortedVehicles = storage.sortByOwnersLastName();
+console.log("Sortes vehicles:");
+sortedVehicles.forEach(vehicle => console.log(vehicle.brand));
+
+
+const filteredVehicles = storage.filterByOwnersLastName("Иванов");
+console.log("Filtered vehicles:");
+filteredVehicles.forEach(vehicle => console.log(vehicle.brand));
+
+const moto = new СMotobike("KAYO", "K1 250 MX", 2022, "XYZ987654321", "X666XX", owner1, "Steel", false);
+
+console.log("Information about motobike in JSON-format:");
+console.log(moto.getMotobikeInfo());
